@@ -4,16 +4,17 @@ class DockerLocalHostname < Formula
   url "https://github.com/asmgit/docker-mac-net-connect/archive/refs/tags/v0.1.7-dlh.tar.gz"
   sha256 "ef3fc3e968756df670109292669808c6ae94dc2d4d66c37add81c20b015bbf89"
   license "MIT"
-  version "0.1.7"
 
   depends_on "go" => :build
   depends_on :macos
 
   def install
     proj = "github.com/chipmk/docker-mac-net-connect"
-    ldflags = "-s -w " \
-      "-X #{proj}/version.Version=v0.1.7 " \
-      "-X #{proj}/version.SetupImage=ghcr.io/chipmk/docker-mac-net-connect/setup"
+    ldflags = %W[
+      -s -w
+      -X #{proj}/version.Version=v0.1.7
+      -X #{proj}/version.SetupImage=ghcr.io/chipmk/docker-mac-net-connect/setup
+    ].join(" ")
     system "go", "build", *std_go_args(ldflags: ldflags), "."
   end
 
