@@ -1,8 +1,8 @@
 class DockerLocalHostname < Formula
   desc "Reach Docker Compose projects by local hostname on macOS (tunnel + /etc/hosts)"
   homepage "https://github.com/asmgit/docker-local-hostname"
-  url "https://github.com/asmgit/docker-local-hostname/archive/refs/tags/v0.1.7.tar.gz"
-  sha256 "5c45acea8d2077407288b3ddcda6f59dc826ada521f34b8ad8364db0616984ee"
+  url "https://github.com/asmgit/docker-local-hostname/archive/refs/tags/v0.1.8.tar.gz"
+  sha256 "dec240fd10fbcd8fe3308bd63a71b0270358de86bdf1aa8b502247b3511ffa66"
   license "MIT"
 
   depends_on "go" => :build
@@ -12,7 +12,7 @@ class DockerLocalHostname < Formula
     proj = "github.com/asmgit/docker-local-hostname"
     ldflags = %W[
       -s -w
-      -X #{proj}/version.Version=v0.1.7
+      -X #{proj}/version.Version=v0.1.8
       -X #{proj}/version.SetupImage=ghcr.io/chipmk/docker-mac-net-connect/setup
     ].join(" ")
     system "go", "build", *std_go_args(ldflags: ldflags), "."
